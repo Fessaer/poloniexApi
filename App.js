@@ -1,38 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+// import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import Home from './src/Pages/Home';
-import TablePanel from './src/Pages/Table'
 import Store from './src/Components/Store';
-import { children } from 'min-document';
+import Quotes from './src/Pages/Quotes';
 
-const Drawer = createDrawerNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 export default function App() {
   return (
     <Store>
       <NavigationContainer>
-        <Drawer.Navigator>
-            {/* {children} */}
-            <Drawer.Screen name="О приложении" component={Home} />
-            <Drawer.Screen name="Котировки" component={TablePanel} />
-          
-        </Drawer.Navigator>
+        <Tab.Navigator tabBarOptions={{
+          style: {
+          // height: 40,
+          paddingTop: 20,
+        }
+        }
+      }>
+            <Tab.Screen name="О приложении" component={Home} />
+            <Tab.Screen name="Котировки" component={Quotes} />
+        </Tab.Navigator>
       </NavigationContainer>
-      </Store>
+    </Store>
     
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+
