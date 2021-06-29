@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import { Context } from '../Components/Store';
-import {Button, StyleSheet, Text, Alert, View, ActivityIndicator,SafeAreaView} from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons'; 
-
 
 export default function RenderTable({navigation}) {
   let [globalState, inSetState] = useContext(Context);
@@ -111,5 +110,4 @@ const styles = StyleSheet.create({
   error: {
 
   }
-
 });
