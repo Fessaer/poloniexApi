@@ -8,7 +8,6 @@ let [globalState, inSetState] = useContext(Context);
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', (e) => {
-      console.log('target Home')
       inSetState({...globalState, timer: false})
   })}, [navigation])
   return (

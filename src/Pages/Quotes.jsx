@@ -27,7 +27,8 @@ export default function Quotes({ navigation }) {
               inSetState({...globalState, catchError: e, loading: false})
             })
       }
-      fetchFunction()
+      fetchFunction() //есть переиспользуемая функция, осталось подлкючить, а эту удалить
+
       return () => null;
     }, [])
   );

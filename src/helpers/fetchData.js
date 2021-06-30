@@ -1,13 +1,21 @@
 const fetchData = async () => {
-  let dataArray = []
+  let dataArray = {}
   let catchError = false
-  await fetch("https://poloniex.com/public?command=returnTicker", {
+
+    await fetch("https://poloniex.com/public?command=returnTicker", {
           method: 'POST'
-      }).then(response => response.json())
-        .then(data => {
-          dataArray = data
+      }).then(response => {
+        return response.json()
+      })
+        .then(data => Object.entries(data))
+        .then(arrData => {
+          dataArray = {dataResponse: arrData, catchError: undefined, loading: false}
         })
-        .catch((e) => catchError = e);
-  return {dataArray, catchError};
+        .catch((e) => {
+          dataArray = {catchError: e, loading: false, loading: false}
+        })
+    return dataArray;
 }
+
 export default fetchData;
+//тут написана переиспользуемая функция, осталось подлкючить
